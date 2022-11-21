@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+body {
+  margin: 0;
+  background-color: #EEF2F6;
+  height: 100vh;
+
+}
+
+span {
+  font-size: 12px;
+}
+
+p {
+  font-size: 14px;
+  color: #595959;
+}
