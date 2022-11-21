@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/header/Header";
-import JobsContainer from "./components/jobsContainer/JobsContainer";
+//import JobsContainer from "./components/jobsContainer/JobsContainer";
 
 function App() {
   return (
