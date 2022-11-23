@@ -5,6 +5,7 @@ const Pagination = ({
   currentPage,
   previousPage,
   nextPage,
+  visibility
 }) => {
   const pageNumbers = [];
 
@@ -15,7 +16,7 @@ const Pagination = ({
   console.log(paginate)
 
   return (
-    <div  className="py-5 bg-white">
+    <div className={visibility ? "block py-5 bg-white" :"hidden"}>
       <ul className="flex flex-row justify-center items-center gap-4">
         <li className="cursor-pointer" onClick={previousPage}>
           <svg
