@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 
+import JobContext from "../../../context/jobContext";
 import JobCard from "./jobCard/JobCard";
 import Pagination from "./pagination/Pagination";
 
 const JobsList = () => {
+  const { setSelectedJob } = useContext(JobContext);
   const messagesEndRef = useRef(null);
   const [jobsData, setJobsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,6 +28,7 @@ const JobsList = () => {
         );
         console.log(response.data);
         setJobsData(response.data.data);
+        setSelectedJob(response.data.data[0]);
       } catch (e) {
         console.log(e);
       }

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import JobContext from "../../../../context/jobContext";
 
 const JobCard = (props) => {
 
   const { title, description, company_name, job_types, location, tags } = props;
+  const { setSelectedJob } = useContext(JobContext);
 
   return (
     <button

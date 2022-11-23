@@ -8,6 +8,7 @@ function App() {
       <Header />
       <main className="flex h-[calc(100vh-96px)] pt-10">
         <JobsContainer />
+        
       </main>
     </div>
   );
