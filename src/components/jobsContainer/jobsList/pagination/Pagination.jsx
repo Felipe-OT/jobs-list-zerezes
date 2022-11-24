@@ -13,8 +13,6 @@ const Pagination = ({
     pageNumbers.push(i);
   }
 
-  console.log(paginate)
-
   return (
     <div className={visibility ? "block py-5 bg-white" :"hidden"}>
       <ul className="flex flex-row justify-center items-center gap-4">

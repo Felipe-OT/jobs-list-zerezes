@@ -5,6 +5,9 @@ import useDebounce from "../../hooks/useDebounce";
 const SearchBar = ({ onChange }) => {
   const debouncedProfessionFilter = useDebounce(onChange, 500);
   const { searchInput, setSearchInput } = useContext(SearchContext);
+  const [inputValue, setInputValue] = useState()
+
+ 
 
   return (
     <div className="flex flex-row w-full justify-between gap-3 mb-2 -mt-[38px]">
@@ -28,10 +31,9 @@ const SearchBar = ({ onChange }) => {
         <input
           className="w-full indent-7 border border-transparent border-b-[#F8D5A2] rounded-md p-0 text-[13px] text-slate-400 placeholder:text-[#DBDBDB] placeholder:font-light"
           type="search"
-          name=""
-          id=""
+
           placeholder="cargo, profissão e etc."
-          onChange={(e) => debouncedProfessionFilter(e.target.value)}
+          onChange={(e) => {debouncedProfessionFilter(e.target.value)}}
         />
       </div>
       <div className="relative flex flex-grow">

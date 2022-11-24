@@ -4,11 +4,11 @@ import JobContext from "../../../../context/jobContext";
 const JobCard = (props) => {
 
   const { title, description, company_name, job_types, location, tags } = props;
-  const { setSelectedJob } = useContext(JobContext);
+  const { setSelectedJob, setJobWasClicked } = useContext(JobContext);
 
   return (
     <button
-      onClick={() => setSelectedJob(props)}
+      onClick={() => {setSelectedJob(props); setJobWasClicked(true) }}
       className="flex flex-col gap-3 bg-white  w-full py-3 px-3 border-b cursor-pointer lg:rounded-md hover:bg-[#FFF6E9]"
     >
       <div className="flex flex-row justify-between items-center w-full">

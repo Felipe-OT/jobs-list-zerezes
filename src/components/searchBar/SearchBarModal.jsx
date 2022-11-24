@@ -1,5 +1,11 @@
+import { useContext } from "react";
+import SearchContext from "../../context/searchContext";
+import useDebounce from "../../hooks/useDebounce";
 
-const SearchBarModal = ({ visible }) => {
+const SearchBarModal = ({ visible, onChange }) => {
+  const debouncedProfessionFilter = useDebounce(onChange, 500);
+  const { searchInput, setSearchInput } = useContext(SearchContext);
+
   return (
     <div
       className={`${
@@ -32,10 +38,10 @@ const SearchBarModal = ({ visible }) => {
 
             <input
               className="indent-7 border border-[#F8D5A2] rounded-xl p-[6px] w-full"
-              type="text"
-              name=""
-              id=""
+              type="search"
+  
               placeholder="cargo, profissão e etc"
+              onChange={(e) => {debouncedProfessionFilter(e.target.value)}}
             />
           </div>
           <div className="relative">
