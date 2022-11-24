@@ -37,7 +37,7 @@ const SearchBarModal = ({ visible, onChange }) => {
             </svg>
 
             <input
-              className="indent-7 border border-[#F8D5A2] rounded-xl p-[6px] w-full"
+              className="indent-7 border border-[#F8D5A2] rounded-xl p-[6px] w-full focus:border-[#ecca96] focus:outline-none"
               type="search"
   
               placeholder="cargo, profissão e etc"
@@ -70,7 +70,7 @@ const SearchBarModal = ({ visible, onChange }) => {
             </svg>
 
             <input
-              className="indent-7 border border-[#F8D5A2] rounded-xl p-[6px] w-full"
+              className="indent-7 border border-[#F8D5A2] rounded-xl p-[6px] w-full focus:border-[#ecca96] focus:outline-none"
               type="text"
               name=""
               id=""

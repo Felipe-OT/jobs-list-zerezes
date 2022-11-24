@@ -2,8 +2,11 @@ import React, { useContext } from "react";
 import JobContext from "../../../../context/jobContext";
 
 const JobCard = (props) => {
-  const { title, description, company_name, job_types, location, tags } = props;
+  const { title, description, company_name, job_types, location, tags, created_at } = props;
   const { setSelectedJob, setJobWasClicked } = useContext(JobContext);
+
+  const date = new Date(created_at)
+
 
   return (
     <button
@@ -33,7 +36,7 @@ const JobCard = (props) => {
             </span>
           )}
         </div>
-        <span className="text-[#ABABAB] text-sm flex-shrink-0">7 Mar</span>
+        <span className="text-[#ABABAB] text-sm flex-shrink-0">{date.getDay()} {date.toLocaleString('default', {month: 'short'}).toUpperCase()}</span>
       </div>
 
       <div className="flex flex-col justify-start items-start gap-1">

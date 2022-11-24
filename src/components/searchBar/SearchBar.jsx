@@ -29,7 +29,7 @@ const SearchBar = ({ onChange }) => {
           />
         </svg>
         <input
-          className="w-full indent-7 border border-transparent border-b-[#F8D5A2] rounded-md p-0 text-[13px] text-slate-400 placeholder:text-[#DBDBDB] placeholder:font-light"
+          className="w-full indent-7 border border-transparent border-b-[#F8D5A2] rounded-md p-0 text-[13px] text-slate-400 placeholder:text-[#DBDBDB] placeholder:font-light focus:border-[#ecca96] focus:outline-none"
           type="search"
 
           placeholder="cargo, profissão e etc."
@@ -61,7 +61,7 @@ const SearchBar = ({ onChange }) => {
           />
         </svg>
         <input
-          className="w-full indent-7 border border-transparent border-b-[#F8D5A2] rounded-md p-[2px] text-[13px] text-slate-400 placeholder:text-[#DBDBDB]  placeholder:font-light"
+          className="w-full indent-7 border border-transparent border-b-[#F8D5A2] rounded-md p-[2px] text-[13px] text-slate-400 placeholder:text-[#DBDBDB]  placeholder:font-light focus:border-[#ecca96] focus:outline-none"
           type="search"
           name=""
           id=""
