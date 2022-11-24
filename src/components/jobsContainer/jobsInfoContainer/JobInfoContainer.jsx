@@ -15,15 +15,16 @@ const JobInfoContainer = () => {
   const [mobileVisibility, setMobileVisibility] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
-  const updateDimensions = () => {
+  const updateDimensions = () => { // Pegas a largura da tela
     setWidth(window.innerWidth);
   };
-  useEffect(() => {
+
+  useEffect(() => { // Verifica quando a tela sofre um resize
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { // Seta a visibilidade do quadro de informações detalhadas no mobile quando o Card é clicado
     if (jobWasClicked && width < 640) {
       setMobileVisibility(true);
     } else {
@@ -32,13 +33,13 @@ const JobInfoContainer = () => {
     }
   }, [jobWasClicked]);
 
-  useEffect(() => {
+  useEffect(() => { // Desabilita o quadro aberto quando a resolução passar de 640px
     if (width > 640 && mobileVisibility == true) {
       setMobileVisibility(false)
     }
   },[width])
 
-  const handleScroll = useCallback((e) => {
+  const handleScroll = useCallback((e) => { // Habilita o CTA fixo quando acontecer scroll vertical 
     if (e.currentTarget.scrollTop > 200) {
       setShowInfoScroll(true);
     } else {
@@ -77,7 +78,7 @@ const JobInfoContainer = () => {
                 {selectedJob.title}
               </h1>
               <div className="flex flex-row justify-start gap-2 text-base max-h-6 overflow-hidden lg:gap-5">
-                <p className="text-[#63B4FF] font-medium ">
+                <p className="text-[#63B4FF] font-medium">
                   {selectedJob.company_name}
                 </p>
                 <p className="text-[#63B4FF] font-medium text-ellipsis">
@@ -140,7 +141,7 @@ const JobInfoContainer = () => {
             </div>
             <div className="flex flex-col items-start justify-between gap-5 mb-5 lg:flex-row lg:mb-0 lg:gap-10">
               <h1 className="text-xl font-semibold">{selectedJob.title}</h1>
-              <button className="bg-[#E4C392] hover:bg-[#3b81c4] transition-all text-base text-white  font-semibold flex flex-shrink-0 rounded-full p-2">
+              <button className="bg-[#E4C392] hover:bg-[#eecc99] transition-all text-base text-white  font-semibold flex flex-shrink-0 rounded-full p-2">
                 Candidatar-se
               </button>
             </div>

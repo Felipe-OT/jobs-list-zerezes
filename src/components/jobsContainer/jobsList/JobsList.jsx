@@ -1,5 +1,11 @@
 import axios from "axios";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import JobContext from "../../../context/jobContext";
 import Pagination from "./pagination/Pagination";
 import SearchBar from "../../searchBar/SearchBar";
@@ -12,7 +18,7 @@ function JobsList() {
   const { searchInput } = useContext(SearchContext);
   const [jobsData, setJobsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchHasValue, setSearchHasValue] = useState(false)
+  const [searchHasValue, setSearchHasValue] = useState(false);
 
   // Variáveis de paginação
   const [postsPerPage] = useState(16);
@@ -21,9 +27,8 @@ function JobsList() {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const currentJobs = jobsData.slice(indexOfFirstPost, indexOfLastPost);
 
-
+  // Coleta os dados da api
   useEffect(() => {
-    // Coleta os dados da api
     const getJobs = async () => {
       try {
         const response = await axios.get(
@@ -45,30 +50,36 @@ function JobsList() {
   useEffect(() => {
     function FilteredData(filter) {
       let filtered = jobsData.filter((item) => {
-        return item.tags.toString().toLowerCase().includes(filter.toLowerCase());
+        return item.tags
+          .toString()
+          .toLowerCase()
+          .includes(filter.toLowerCase());
       });
-  
+
       if (filter !== "") {
-        setSearchHasValue(true)
+        setSearchHasValue(true);
         setFilteredJobs(filtered.slice(indexOfFirstPost, indexOfLastPost));
       } else {
-        setSearchHasValue(false)
+        setSearchHasValue(false);
         setFilteredJobs([]);
       }
     }
-    FilteredData(searchInput)
-  },[searchInput])
+    FilteredData(searchInput);
+  }, [searchInput]);
 
+   // Página atual
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  // Página anterior
   const previousPage = () => {
     if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
+  //Próxima página
   const nextPage = () => {
     if (filteredJobs.length > 0) {
       if (currentPage !== Math.ceil(filteredJobs.length / postsPerPage)) {
@@ -99,7 +110,9 @@ function JobsList() {
         </div>
         <div>
           <Pagination
-            visibility={searchInput.length > 0 && filteredJobs.length == 0 ? false : true}
+            visibility={
+              searchInput.length > 0 && filteredJobs.length == 0 ? false : true
+            }
             postsPerPage={postsPerPage}
             totalPosts={
               filteredJobs.length > 0 ? filteredJobs.length : jobsData.length

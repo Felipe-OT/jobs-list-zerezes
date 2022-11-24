@@ -2,13 +2,15 @@ import React, { useContext } from "react";
 import JobContext from "../../../../context/jobContext";
 
 const JobCard = (props) => {
-
   const { title, description, company_name, job_types, location, tags } = props;
   const { setSelectedJob, setJobWasClicked } = useContext(JobContext);
 
   return (
     <button
-      onClick={() => {setSelectedJob(props); setJobWasClicked(true) }}
+      onClick={() => {
+        setSelectedJob(props);
+        setJobWasClicked(true);
+      }}
       className="flex flex-col gap-3 bg-white  w-full py-3 px-3 border-b cursor-pointer lg:rounded-md hover:bg-[#FFF6E9]"
     >
       <div className="flex flex-row justify-between items-center w-full">
@@ -41,13 +43,14 @@ const JobCard = (props) => {
           </h3>
         </div>
         <div className="flex flex-col items-start gap-1 w-full h-auto break-words lg:flex-row lg:items-start lg:justify-start lg:gap-6">
-          <span className="flex items-center gap-1 font-normal text-[#63B4FF] text-xs text-left">
+          <div className="flex items-start gap-1 max-w-[250px] font-normal text-[#63B4FF] text-xs text-left">
             <img src="src/assets/company.svg" alt="" width={"18px"} />{" "}
-            {company_name}
-          </span>
-          <span className="flex items-center gap-1 font-normal text-[#63B4FF] text-xs text-left break-all">
-            <img src="src/assets/map.svg" alt="" width={"18px"} /> {location}
-          </span>
+            <span>{company_name}</span>
+          </div>
+          <div className="flex items-center gap-1 font-normal text-[#63B4FF] text-xs text-left break-all">
+            <img src="src/assets/map.svg" alt="" width={"15px"} />
+            <span>{location}</span>
+          </div>
         </div>
       </div>
       <div className="flex flex-row flex-wrap gap-1  justify-start">
