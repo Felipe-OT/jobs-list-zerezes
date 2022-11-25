@@ -15,31 +15,36 @@ const JobInfoContainer = () => {
   const [mobileVisibility, setMobileVisibility] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
-  const updateDimensions = () => { // Pegas a largura da tela
+  const updateDimensions = () => {
+    // Pegas a largura da tela
     setWidth(window.innerWidth);
   };
 
-  useEffect(() => { // Verifica quando a tela sofre um resize
+  useEffect(() => {
+    // Verifica quando a tela sofre um resize
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  useEffect(() => { // Seta a visibilidade do quadro de informações detalhadas no mobile quando o Card é clicado
+  useEffect(() => {
+    // Seta a visibilidade do quadro de informações detalhadas no mobile quando o Card é clicado
     if (jobWasClicked && width < 640) {
       setMobileVisibility(true);
     } else {
-      setJobWasClicked(false)
+      setJobWasClicked(false);
       setMobileVisibility(false);
     }
   }, [jobWasClicked]);
 
-  useEffect(() => { // Desabilita o quadro aberto quando a resolução passar de 640px
+  useEffect(() => {
+    // Desabilita o quadro aberto quando a resolução passar de 640px
     if (width > 640 && mobileVisibility == true) {
-      setMobileVisibility(false)
+      setMobileVisibility(false);
     }
-  },[width])
+  }, [width]);
 
-  const handleScroll = useCallback((e) => { // Habilita o CTA fixo quando acontecer scroll vertical 
+  const handleScroll = useCallback((e) => {
+    // Habilita o CTA fixo quando acontecer scroll vertical
     if (e.currentTarget.scrollTop > 200) {
       setShowInfoScroll(true);
     } else {
@@ -132,12 +137,18 @@ const JobInfoContainer = () => {
         <div className="flex flex-col">
           <div className="mb-8 ">
             <div className="flex flex-row gap-6">
-              <p className="text-[#63B4FF] font-medium">
-                {selectedJob.company_name}
-              </p>
-              <p className="lg:hidden block text-[#63B4FF] font-medium">
-                {selectedJob.location}
-              </p>
+              <div className="flex gap-1">
+                <img src="src/assets/company.svg" alt="" width={"18px"} />
+                <p className="text-[#63B4FF] font-medium">
+                  {selectedJob.company_name}
+                </p>
+              </div>
+              <div className="lg:hidden flex gap-1">
+                <img src="src/assets/map.svg" alt="" width={"15px"} />
+                <p className=" text-[#63B4FF] font-medium">
+                  {selectedJob.location}
+                </p>
+              </div>
             </div>
             <div className="flex flex-col items-start justify-between gap-5 mb-5 lg:flex-row lg:mb-0 lg:gap-10">
               <h1 className="text-xl font-semibold">{selectedJob.title}</h1>
@@ -145,9 +156,12 @@ const JobInfoContainer = () => {
                 Candidatar-se
               </button>
             </div>
-            <p className="hidden lg:block text-[#63B4FF] font-medium">
-              {selectedJob.location}
-            </p>
+            <div className="flex gap-1">
+              <img src="src/assets/map.svg" alt="" width={"15px"} />
+              <p className="hidden lg:block text-[#63B4FF] font-medium">
+                {selectedJob.location}
+              </p>
+            </div>
           </div>
           <div
             className="text-[#515151] text-[14px]"

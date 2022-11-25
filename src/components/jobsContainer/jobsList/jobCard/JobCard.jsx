@@ -47,7 +47,7 @@ const JobCard = (props) => {
         </div>
         <div className="flex flex-col items-start gap-1 w-full h-auto break-words lg:flex-row lg:items-start lg:justify-start lg:gap-6">
           <div className="flex items-start gap-1 max-w-[250px] font-normal text-[#63B4FF] text-xs text-left">
-            <img src="src/assets/company.svg" alt="" width={"18px"} />{" "}
+            <img src="src/assets/company.svg" alt="" width={"18px"} />
             <span>{company_name}</span>
           </div>
           <div className="flex items-center gap-1 font-normal text-[#63B4FF] text-xs text-left break-all">
